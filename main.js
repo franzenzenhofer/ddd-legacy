@@ -146,6 +146,7 @@
     setWorldColor();
     end_dot = createEndDot(world, two);
     dot = createDot(world, two, two.width / 2, -30, 10, 1);
+    dot.p2.body.velocity = [0, 120];
     dot.p2.body.ID = "DOT";
     return two.play();
   })();
