@@ -206,7 +206,7 @@
     if ((e.bodyB.ID === 'ENDDOT' || e.bodyB.ID === 'DOT') && (e.bodyA.ID === 'ENDDOT' || e.bodyA.ID === 'DOT')) {
       end_dot.two.fill = 'white';
       end_dot.two.stroke = 'white';
-      return _game_won_ = 10;
+      return _game_won_ = 15;
     }
   });
 

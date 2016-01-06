@@ -135,7 +135,7 @@ world.on("beginContact",(e) ->
   if (e.bodyB.ID is 'ENDDOT' or e.bodyB.ID is 'DOT' ) and (e.bodyA.ID is 'ENDDOT' or e.bodyA.ID is 'DOT' )
     end_dot.two.fill = 'white'
     end_dot.two.stroke = 'white'
-    _game_won_ = 10
+    _game_won_ = 15
 )
 
 
