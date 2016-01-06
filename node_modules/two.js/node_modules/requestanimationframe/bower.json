@@ -1,0 +1,8 @@
+{
+    "name": "requestAnimationFrame",
+    "version": "0.0.22",
+    "main": "app/requestAnimationFrame.js",
+    "licenses": [ {
+        "type": "MIT"
+    } ]
+}
