@@ -10,10 +10,8 @@ two = new Two(
   fullscreen: true
   ).appendTo(document.body)
 
-#d(two)
-#console.log(two.height/17)
 gravity = Math.floor(two.height/10)
-d("gravity:"+gravity)
+
 world = new p2.World(
   gravity:[0, gravity]
 )
@@ -29,12 +27,9 @@ setWorldColor = (color = Please.make_color()) ->
   window.document.body.style.background = color
 
 createDot = (world, two, x = 70, y = 200, r = 10, m = 1)  ->
-  d("x:"+x)
-  d("y"+y)
-  d("r"+r)
   circle = two.makeCircle(x, y, r)
   circle.fill = Please.make_color()
-  circle.stroke = 'black'#Please.make_color()
+  circle.stroke = 'black'
   circle.linewidth = 2;
 
   circleShape = new p2.Circle({ radius: r })
@@ -71,10 +66,9 @@ drawDot = (dot, world = world, two = two) ->
 createEndDot = (world = world, two = two, x,y,r=20,m=0) ->
 
   randomX = (x) ->
-    #alert(w)
     if x > two.width/2-40 and x < two.width+(40*2)
       randomX(randomInt(0,two.width))
-      #debugger;
+
     else
       return x
 
@@ -82,17 +76,12 @@ createEndDot = (world = world, two = two, x,y,r=20,m=0) ->
     y = randomInt(0,two.height)
     x = randomInt(0,two.width)#x = randomX(randomInt(0,two.width))
 
-  #console.log(x)
-  #console.log(two.width)
-  #console.log(two.width/2-50)
-  #console.log(two.width-(two.width/2-50))
-  #console.log('----')
   end_dot = createDot(world, two, x,y,r,m)
   end_dot.p2.shape.sensor = true
   end_dot.p2.body.damping = 0
   end_dot.p2.body.ID = "ENDDOT"
   end_dot.two.fill = 'black'
-  #drawDot(end_dot, world, two)
+
   return end_dot
 
 
@@ -118,24 +107,20 @@ restart = (won = false) ->
   removeDot(dot)
   for doties in user_dots
     removeDot(doties)
-  #console.log('restart')
   init()
 
 isDotOutOfBounds = (dot, world = world, two = two) ->
-  d(two.height+50)
   if dot.p2.body.position[1]>two.height+50 or dot.p2.body.position[0]<-50 or dot.p2.body.position[0]>two.width+50
-    d('outbounds')
-    #debugger;
+
     return true
   else
-    d('inbounds')
     return false
 
 
 
 two.bind('update', (frameCount) ->
   drawDot(dot)
-  #drawLine(line)
+
   world.step(1/60)
   if _game_won_ > -1
     if _game_won_ is 0
@@ -145,15 +130,13 @@ two.bind('update', (frameCount) ->
       _game_won_ = _game_won_ - 1
 
   if _game_won_ is -1 and isDotOutOfBounds(dot, world, two) is true
-    #debugger
+
     restart(false)
 
 )
 
 world.on("beginContact",(e) ->
-  d(e)
   if (e.bodyB.ID is 'ENDDOT' or e.bodyB.ID is 'DOT' ) and (e.bodyA.ID is 'ENDDOT' or e.bodyA.ID is 'DOT' )
-    d(end_dot)
     end_dot.two.fill = 'white'
     end_dot.two.stroke = 'white'
     _game_won_ = 10
@@ -165,8 +148,7 @@ mc = new Hammer.Manager(document.body)
 Tap = new Hammer.Tap({interval:0})
 mc.add(Tap)
 mc.on('tap',(e)->
-  #alert(1)
-  #console.log(e)
+
   user_dots.push(createFixedDot(world, two, dot, e.pointers[0].pageX,e.pointers[0].pageY,30))
   )
 

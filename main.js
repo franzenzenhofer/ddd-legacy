@@ -25,8 +25,6 @@
 
   gravity = Math.floor(two.height / 10);
 
-  d("gravity:" + gravity);
-
   world = new p2.World({
     gravity: [0, gravity]
   });
@@ -60,9 +58,6 @@
     if (m == null) {
       m = 1;
     }
-    d("x:" + x);
-    d("y" + y);
-    d("r" + r);
     circle = two.makeCircle(x, y, r);
     circle.fill = Please.make_color();
     circle.stroke = 'black';
@@ -182,12 +177,9 @@
     if (two == null) {
       two = two;
     }
-    d(two.height + 50);
     if (dot.p2.body.position[1] > two.height + 50 || dot.p2.body.position[0] < -50 || dot.p2.body.position[0] > two.width + 50) {
-      d('outbounds');
       return true;
     } else {
-      d('inbounds');
       return false;
     }
   };
@@ -209,9 +201,7 @@
   });
 
   world.on("beginContact", function(e) {
-    d(e);
     if ((e.bodyB.ID === 'ENDDOT' || e.bodyB.ID === 'DOT') && (e.bodyA.ID === 'ENDDOT' || e.bodyA.ID === 'DOT')) {
-      d(end_dot);
       end_dot.two.fill = 'white';
       end_dot.two.stroke = 'white';
       return _game_won_ = 10;
