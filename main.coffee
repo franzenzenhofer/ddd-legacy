@@ -66,19 +66,26 @@ drawDot = (dot, world = world, two = two) ->
  dot.two.translation.set(dot.p2.body.position[0],dot.p2.body.position[1])
  return dot
 
-createEndDot = (world, two, w,h,r=20,m=0) ->
+createEndDot = (world = world, two = two, x,y,r=20,m=0) ->
 
-  randomW = (w) ->
+  randomX = (x) ->
     #alert(w)
-    if w > two.width/2-50 and w < two.width-two.width/2-50
-      randomW(randomInt(0,two.width))
+    if x > two.width/2-40 and x < two.width-(two.width/2-40)
+      randomX(randomInt(0,two.width))
+      #debugger;
     else
-      return w
+      return x
 
-  if not (w and h)
-    h = randomInt(0,two.height)
-    w = randomW(randomInt(0,two.width))
-  end_dot = createDot(world, two, w,h,r,m)
+  if not (x and y)
+    y = randomInt(0,two.height)
+    x = randomX(randomInt(0,two.width))
+
+  #console.log(x)
+  #console.log(two.width)
+  #console.log(two.width/2-50)
+  #console.log(two.width-(two.width/2-50))
+  #console.log('----')
+  end_dot = createDot(world, two, x,y,r,m)
   end_dot.p2.shape.sensor = true
   end_dot.p2.body.damping = 0
   end_dot.p2.body.ID = "ENDDOT"

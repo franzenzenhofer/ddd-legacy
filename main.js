@@ -111,26 +111,32 @@
     return dot;
   };
 
-  createEndDot = function(world, two, w, h, r, m) {
-    var randomW;
+  createEndDot = function(world, two, x, y, r, m) {
+    var randomX;
+    if (world == null) {
+      world = world;
+    }
+    if (two == null) {
+      two = two;
+    }
     if (r == null) {
       r = 20;
     }
     if (m == null) {
       m = 0;
     }
-    randomW = function(w) {
-      if (w > two.width / 2 - 50 && w < two.width - two.width / 2 - 50) {
-        return randomW(randomInt(0, two.width));
+    randomX = function(x) {
+      if (x > two.width / 2 - 40 && x < two.width - (two.width / 2 - 40)) {
+        return randomX(randomInt(0, two.width));
       } else {
-        return w;
+        return x;
       }
     };
-    if (!(w && h)) {
-      h = randomInt(0, two.height);
-      w = randomW(randomInt(0, two.width));
+    if (!(x && y)) {
+      y = randomInt(0, two.height);
+      x = randomX(randomInt(0, two.width));
     }
-    end_dot = createDot(world, two, w, h, r, m);
+    end_dot = createDot(world, two, x, y, r, m);
     end_dot.p2.shape.sensor = true;
     end_dot.p2.body.damping = 0;
     end_dot.p2.body.ID = "ENDDOT";
