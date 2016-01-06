@@ -216,7 +216,7 @@
   mc.add(Tap);
 
   mc.on('tap', function(e) {
-    return user_dots.push(createFixedDot(world, two, dot, e.pointers[0].offsetX, e.pointers[0].offsetY, 30));
+    return user_dots.push(createFixedDot(world, two, dot, e.pointers[0].pageX, e.pointers[0].pageY, 30));
   });
 
 
