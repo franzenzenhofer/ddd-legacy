@@ -23,8 +23,10 @@
     fullscreen: true
   }).appendTo(document.body);
 
+  console.log(two.height / 17);
+
   world = new p2.World({
-    gravity: [0, 50]
+    gravity: [0, two.height / 10]
   });
 
   _game_won_ = -1;
@@ -139,7 +141,7 @@
   (init = function() {
     setWorldColor();
     end_dot = createEndDot(world, two);
-    dot = createDot(world, two, two.width / 2, -100, 10, 1);
+    dot = createDot(world, two, two.width / 2, -15, 10, 1);
     dot.p2.body.ID = "DOT";
     return two.play();
   })();
