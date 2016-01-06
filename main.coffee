@@ -1,4 +1,4 @@
-_DEBUG_ = true
+_DEBUG_ = false
 d = (m, debug = _DEBUG_ ) -> console.log(m) if _DEBUG_
 
 randomInt = (min,max) ->
@@ -80,7 +80,7 @@ createEndDot = (world = world, two = two, x,y,r=20,m=0) ->
 
   if not (x and y)
     y = randomInt(0,two.height)
-    x = randomInt(0,two.height)#x = randomX(randomInt(0,two.width))
+    x = randomInt(0,two.width)#x = randomX(randomInt(0,two.width))
 
   #console.log(x)
   #console.log(two.width)

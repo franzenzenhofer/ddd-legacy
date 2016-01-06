@@ -2,7 +2,7 @@
 (function() {
   var Tap, _DEBUG_, _game_won_, createDot, createEndDot, createFixedDot, d, dot, drawDot, end_dot, gravity, init, isDotOutOfBounds, mc, randomInt, removeDot, restart, setWorldColor, two, user_dots, world;
 
-  _DEBUG_ = true;
+  _DEBUG_ = false;
 
   d = function(m, debug) {
     if (debug == null) {
@@ -136,7 +136,7 @@
     };
     if (!(x && y)) {
       y = randomInt(0, two.height);
-      x = randomInt(0, two.height);
+      x = randomInt(0, two.width);
     }
     end_dot = createDot(world, two, x, y, r, m);
     end_dot.p2.shape.sensor = true;
