@@ -126,7 +126,7 @@
       m = 0;
     }
     randomX = function(x) {
-      if (x > two.width / 2 - 40 && x < two.width - (two.width / 2 - 40)) {
+      if (x > two.width / 2 - 40 && x < two.width + (40 * 2)) {
         return randomX(randomInt(0, two.width));
       } else {
         return x;
@@ -147,7 +147,7 @@
   (init = function() {
     setWorldColor();
     end_dot = createEndDot(world, two);
-    dot = createDot(world, two, two.width / 2, -15, 10, 1);
+    dot = createDot(world, two, two.width / 2, -20, 10, 1);
     dot.p2.body.ID = "DOT";
     return two.play();
   })();

@@ -70,7 +70,7 @@ createEndDot = (world = world, two = two, x,y,r=20,m=0) ->
 
   randomX = (x) ->
     #alert(w)
-    if x > two.width/2-40 and x < two.width-(two.width/2-40)
+    if x > two.width/2-40 and x < two.width+(40*2)
       randomX(randomInt(0,two.width))
       #debugger;
     else
@@ -98,7 +98,7 @@ createEndDot = (world = world, two = two, x,y,r=20,m=0) ->
 do init = () ->
   setWorldColor()
   end_dot = createEndDot(world, two)
-  dot = createDot(world, two, two.width/2,-15,10,1)
+  dot = createDot(world, two, two.width/2,-20,10,1)
   dot.p2.body.ID = "DOT"
   two.play()
 
