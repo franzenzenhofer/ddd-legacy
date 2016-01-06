@@ -24,7 +24,7 @@
   }).appendTo(document.body);
 
   world = new p2.World({
-    gravity: [0, 75]
+    gravity: [0, 50]
   });
 
   _game_won_ = -1;
