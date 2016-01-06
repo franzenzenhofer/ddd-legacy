@@ -17,11 +17,25 @@ world = new p2.World(
 )
 
 _game_won_ = -1
+_level_ = 0
 
 end_dot = {}
 dot = {}
 user_dots = []
 
+setLevelCounter = (l=0, color = Please.make_color()) ->
+  level_element = document.getElementById('level')
+  if not level_element and l is 0
+    return false
+  if not level_element
+    level_element = document.createElement('h2')
+    level_element.id = 'level'
+    document.body.appendChild(level_element)
+  level_element.setAttribute('style','color:'+color+';')
+  if l isnt 0
+    level_element.innerHTML = ""+l
+  else
+    level_element.innerHTML = ''+l
 
 setWorldColor = (color = Please.make_color()) ->
   window.document.body.style.background = color
@@ -66,8 +80,13 @@ drawDot = (dot, world = world, two = two) ->
  dot.two.translation.set( Math.floor(dot.p2.body.position[0]),Math.floor(dot.p2.body.position[1]))
  return dot
 
-createEndDot = (world = world, two = two, x = randomInt(0,two.width),y=randomInt(0,two.height),r=20,m=0) ->
+createEndDot = (world = world, two = two, x ,y=randomInt(0,two.height),r=20,m=0) ->
 
+  if not x
+    if Math.random() < 0.5
+      x = randomInt(0,Math.floor(two.width/2)-15)
+    else
+      x = randomInt(Math.floor(two.width/2)+15,two.width)
   end_dot = createDot(world, two, x,y,r,m)
   end_dot.p2.shape.sensor = true
   end_dot.p2.body.damping = 0
@@ -80,6 +99,12 @@ createEndDot = (world = world, two = two, x = randomInt(0,two.width),y=randomInt
 
 do init = () ->
   setWorldColor()
+  hard_dots = _level_ - 5
+  if hard_dots > 0
+    for x in [0...hard_dots]
+      #TODO check that these dots are not abve the enddot
+      user_dots.push(createFixedDot(world, two, dot, randomInt(0,two.width),randomInt(0,two.height),30))
+
   end_dot = createEndDot(world, two)
   dot = createDot(world, two, two.width/2,-30,10,1)
   if(two.height > gravity*10)
@@ -103,6 +128,12 @@ restart = (won = false) ->
   removeDot(dot)
   for doties in user_dots
     removeDot(doties)
+  if won is true
+    _level_ = _level_ + 1
+  else
+    _level_ = _level_ - 1
+    if _level_ < 0 then _level_ = 0
+  setLevelCounter(_level_)
   init()
 
 isDotOutOfBounds = (dot, world = world, two = two) ->
