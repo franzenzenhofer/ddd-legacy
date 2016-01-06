@@ -27,6 +27,9 @@ setWorldColor = (color = Please.make_color()) ->
   window.document.body.style.background = color
 
 createDot = (world, two, x = 70, y = 200, r = 10, m = 1)  ->
+  x = Math.floor(x)
+  y = Math.floor(y)
+  r = Math.floor(y)
   circle = two.makeCircle(x, y, r)
   circle.fill = Please.make_color()
   circle.stroke = 'black'
@@ -60,7 +63,7 @@ createFixedDot = (world, two, dot, w,h,r,m=0) ->
   return new_dot
 
 drawDot = (dot, world = world, two = two) ->
- dot.two.translation.set(dot.p2.body.position[0],dot.p2.body.position[1])
+ dot.two.translation.set( Math.floor(dot.p2.body.position[0]),Math.floor(dot.p2.body.position[1]))
  return dot
 
 createEndDot = (world = world, two = two, x = randomInt(0,two.width),y=randomInt(0,two.height),r=20,m=0) ->

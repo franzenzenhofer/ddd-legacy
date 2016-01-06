@@ -58,6 +58,9 @@
     if (m == null) {
       m = 1;
     }
+    x = Math.floor(x);
+    y = Math.floor(y);
+    r = Math.floor(y);
     circle = two.makeCircle(x, y, r);
     circle.fill = Please.make_color();
     circle.stroke = 'black';
@@ -104,7 +107,7 @@
     if (two == null) {
       two = two;
     }
-    dot.two.translation.set(dot.p2.body.position[0], dot.p2.body.position[1]);
+    dot.two.translation.set(Math.floor(dot.p2.body.position[0]), Math.floor(dot.p2.body.position[1]));
     return dot;
   };
 
