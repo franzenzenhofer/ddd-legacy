@@ -148,6 +148,7 @@
       dot.p2.body.velocity = [0, Math.floor(two.height / 9)];
     }
     dot.p2.body.ID = "DOT";
+    window.scrollTo(0, 1);
     return two.play();
   })();
 
