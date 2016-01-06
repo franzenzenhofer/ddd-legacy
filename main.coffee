@@ -29,7 +29,7 @@ setWorldColor = (color = Please.make_color()) ->
 createDot = (world, two, x = 70, y = 200, r = 10, m = 1)  ->
   x = Math.floor(x)
   y = Math.floor(y)
-  r = Math.floor(y)
+  r = Math.floor(r)
   circle = two.makeCircle(x, y, r)
   circle.fill = Please.make_color()
   circle.stroke = 'black'

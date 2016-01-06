@@ -60,7 +60,7 @@
     }
     x = Math.floor(x);
     y = Math.floor(y);
-    r = Math.floor(y);
+    r = Math.floor(r);
     circle = two.makeCircle(x, y, r);
     circle.fill = Please.make_color();
     circle.stroke = 'black';
