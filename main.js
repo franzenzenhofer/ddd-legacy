@@ -109,29 +109,23 @@
   };
 
   createEndDot = function(world, two, x, y, r, m) {
-    var randomX;
     if (world == null) {
       world = world;
     }
     if (two == null) {
       two = two;
     }
+    if (x == null) {
+      x = randomInt(0, two.width);
+    }
+    if (y == null) {
+      y = randomInt(0, two.height);
+    }
     if (r == null) {
       r = 20;
     }
     if (m == null) {
       m = 0;
-    }
-    randomX = function(x) {
-      if (x > two.width / 2 - 40 && x < two.width + (40 * 2)) {
-        return randomX(randomInt(0, two.width));
-      } else {
-        return x;
-      }
-    };
-    if (!(x && y)) {
-      y = randomInt(0, two.height);
-      x = randomInt(0, two.width);
     }
     end_dot = createDot(world, two, x, y, r, m);
     end_dot.p2.shape.sensor = true;
@@ -145,7 +139,7 @@
     setWorldColor();
     end_dot = createEndDot(world, two);
     dot = createDot(world, two, two.width / 2, -30, 10, 1);
-    dot.p2.body.velocity = [0, gravity];
+    dot.p2.body.velocity = [0, two.height / 4];
     dot.p2.body.ID = "DOT";
     return two.play();
   })();

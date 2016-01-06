@@ -63,18 +63,7 @@ drawDot = (dot, world = world, two = two) ->
  dot.two.translation.set(dot.p2.body.position[0],dot.p2.body.position[1])
  return dot
 
-createEndDot = (world = world, two = two, x,y,r=20,m=0) ->
-
-  randomX = (x) ->
-    if x > two.width/2-40 and x < two.width+(40*2)
-      randomX(randomInt(0,two.width))
-
-    else
-      return x
-
-  if not (x and y)
-    y = randomInt(0,two.height)
-    x = randomInt(0,two.width)#x = randomX(randomInt(0,two.width))
+createEndDot = (world = world, two = two, x = randomInt(0,two.width),y=randomInt(0,two.height),r=20,m=0) ->
 
   end_dot = createDot(world, two, x,y,r,m)
   end_dot.p2.shape.sensor = true
@@ -90,7 +79,7 @@ do init = () ->
   setWorldColor()
   end_dot = createEndDot(world, two)
   dot = createDot(world, two, two.width/2,-30,10,1)
-  dot.p2.body.velocity = [0,gravity]
+  dot.p2.body.velocity = [0,two.height/4]
   dot.p2.body.ID = "DOT"
   two.play()
 
