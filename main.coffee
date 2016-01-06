@@ -141,7 +141,7 @@ world.on("beginContact",(e) ->
 
 #tap stuff
 mc = new Hammer.Manager(document.body)
-Tap = new Hammer.Tap({interval:1, time:1})
+Tap = new Hammer.Tap({interval:1})
 mc.add(Tap)
 mc.on('tap',(e)->
 
