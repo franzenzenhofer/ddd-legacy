@@ -139,7 +139,11 @@
     setWorldColor();
     end_dot = createEndDot(world, two);
     dot = createDot(world, two, two.width / 2, -30, 10, 1);
-    dot.p2.body.velocity = [0, two.height / 4];
+    if (two.height > gravity * 10) {
+      dot.p2.body.velocity = [0, Math.floor(two.height / 7)];
+    } else {
+      dot.p2.body.velocity = [0, Math.floor(two.height / 9)];
+    }
     dot.p2.body.ID = "DOT";
     return two.play();
   })();
