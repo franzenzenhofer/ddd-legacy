@@ -213,7 +213,8 @@
   mc = new Hammer.Manager(document.body);
 
   Tap = new Hammer.Tap({
-    interval: 0
+    interval: 1,
+    time: 1
   });
 
   mc.add(Tap);
