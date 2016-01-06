@@ -100,7 +100,6 @@ createEndDot = (world = world, two = two, x ,y=randomInt(0,two.height),r=20,m=0)
 do init = () ->
   setWorldColor()
 
-
   dot = createDot(world, two, two.width/2,-30,10,1)
   hard_dots = _level_ - 5
   if hard_dots > 0
@@ -130,6 +129,7 @@ restart = (won = false) ->
   removeDot(dot)
   for doties in user_dots
     removeDot(doties)
+  user_dots = []
   if won is true
     _level_ = _level_ + 1
   else

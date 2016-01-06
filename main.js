@@ -207,6 +207,7 @@
       doties = user_dots[i];
       removeDot(doties);
     }
+    user_dots = [];
     if (won === true) {
       _level_ = _level_ + 1;
     } else {
