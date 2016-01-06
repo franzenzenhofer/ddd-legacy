@@ -38,13 +38,10 @@
   user_dots = [];
 
   setWorldColor = function(color) {
-    var tc;
     if (color == null) {
       color = Please.make_color();
     }
-    window.document.body.style.background = color;
-    tc = document.getElementById('theme_color');
-    return tc.setAttribute('content', color);
+    return window.document.body.style.background = color;
   };
 
   createDot = function(world, two, x, y, r, m) {

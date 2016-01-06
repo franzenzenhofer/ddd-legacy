@@ -25,8 +25,8 @@ user_dots = []
 
 setWorldColor = (color = Please.make_color()) ->
   window.document.body.style.background = color
-  tc = document.getElementById('theme_color')
-  tc.setAttribute('content',color)
+  #tc = document.getElementById('theme_color')
+  #tc.setAttribute('content',color)
 
 createDot = (world, two, x = 70, y = 200, r = 10, m = 1)  ->
   x = Math.floor(x)
