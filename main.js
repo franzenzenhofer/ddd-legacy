@@ -170,16 +170,21 @@
   };
 
   (init = function() {
-    var hard_dots, i, ref, x;
+    var hard_dots, hd, hd_x, hd_y, i, ref, x;
     setWorldColor();
+    end_dot = createEndDot(world, two);
     dot = createDot(world, two, two.width / 2, -30, 10, 1);
     hard_dots = _level_ - 5;
     if (hard_dots > 0) {
       for (x = i = 0, ref = hard_dots; 0 <= ref ? i < ref : i > ref; x = 0 <= ref ? ++i : --i) {
-        user_dots.push(createFixedDot(world, two, dot, randomInt(0, two.width), randomInt(50, two.height), 30));
+        hd_x = randomInt(0, two.width);
+        hd_y = randomInt(50, two.height);
+        if (!(hd_x > end_dot.p2.body.position[0] - 35 && hd_x < end_dot.p2.body.position[0] + 35 && hd_y > end_dot.p2.body.position[1] - 35 && hd_y < end_dot.p2.body.position[1] + 35)) {
+          hd = createFixedDot(world, two, dot, hd_x, hd_y, 30);
+          user_dots.push(hd);
+        }
       }
     }
-    end_dot = createEndDot(world, two);
     if (two.height > gravity * 10) {
       dot.p2.body.velocity = [0, Math.floor(two.height / 7)];
     } else {

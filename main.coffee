@@ -100,13 +100,21 @@ createEndDot = (world = world, two = two, x ,y=randomInt(0,two.height),r=20,m=0)
 do init = () ->
   setWorldColor()
 
+
+
+  end_dot = createEndDot(world, two)
   dot = createDot(world, two, two.width/2,-30,10,1)
   hard_dots = _level_ - 5
   if hard_dots > 0
     for x in [0...hard_dots]
-      #TODO check that these dots are not abve the enddot
-      user_dots.push(createFixedDot(world, two, dot, randomInt(0,two.width),randomInt(50,two.height),30))
-  end_dot = createEndDot(world, two)
+      hd_x = randomInt(0,two.width)
+      hd_y = randomInt(50,two.height)
+      if not (hd_x > end_dot.p2.body.position[0] - 35 and hd_x < end_dot.p2.body.position[0] + 35 and hd_y > end_dot.p2.body.position[1] - 35 and hd_y < end_dot.p2.body.position[1] + 35)
+        hd = createFixedDot(world, two, dot, hd_x, hd_y,30)
+        user_dots.push(hd)
+
+
+
 
   if(two.height > gravity*10)
     dot.p2.body.velocity = [0,Math.floor(two.height/7)]
