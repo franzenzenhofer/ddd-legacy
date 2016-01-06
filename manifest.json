@@ -1,7 +1,5 @@
 {
  "name": "Dot Dot Dot",
- "start_url": "index.html",
- "display": "standalone",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
