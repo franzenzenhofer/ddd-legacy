@@ -25,6 +25,11 @@ user_dots = []
 
 setWorldColor = (color = Please.make_color()) ->
   window.document.body.style.background = color
+  mt = document.createElement('meta')
+  #<meta name="theme-color" content="#db5945">
+  mt.setAttribute('name', 'theme-color')
+  mt.setAttribute('content', color)
+  window.document.head.appendChild(mt)
   #tc = document.getElementById('theme_color')
   #tc.setAttribute('content',color)
 
