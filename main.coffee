@@ -105,7 +105,7 @@ do init = () ->
   if hard_dots > 0
     for x in [0...hard_dots]
       #TODO check that these dots are not abve the enddot
-      user_dots.push(createFixedDot(world, two, dot, randomInt(0,two.width),randomInt(0,two.height),30))
+      user_dots.push(createFixedDot(world, two, dot, randomInt(0,two.width),randomInt(50,two.height),30))
   end_dot = createEndDot(world, two)
 
   if(two.height > gravity*10)

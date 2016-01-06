@@ -176,7 +176,7 @@
     hard_dots = _level_ - 5;
     if (hard_dots > 0) {
       for (x = i = 0, ref = hard_dots; 0 <= ref ? i < ref : i > ref; x = 0 <= ref ? ++i : --i) {
-        user_dots.push(createFixedDot(world, two, dot, randomInt(0, two.width), randomInt(0, two.height), 30));
+        user_dots.push(createFixedDot(world, two, dot, randomInt(0, two.width), randomInt(50, two.height), 30));
       }
     }
     end_dot = createEndDot(world, two);
