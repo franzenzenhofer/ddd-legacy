@@ -26,7 +26,7 @@
   console.log(two.height / 17);
 
   world = new p2.World({
-    gravity: [0, two.height / 10]
+    gravity: [0, Math.floor(two.height / 17)]
   });
 
   _game_won_ = -1;
