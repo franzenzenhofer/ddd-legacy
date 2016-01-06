@@ -172,6 +172,7 @@
   (init = function() {
     var hard_dots, i, ref, x;
     setWorldColor();
+    dot = createDot(world, two, two.width / 2, -30, 10, 1);
     hard_dots = _level_ - 5;
     if (hard_dots > 0) {
       for (x = i = 0, ref = hard_dots; 0 <= ref ? i < ref : i > ref; x = 0 <= ref ? ++i : --i) {
@@ -179,7 +180,6 @@
       }
     }
     end_dot = createEndDot(world, two);
-    dot = createDot(world, two, two.width / 2, -30, 10, 1);
     if (two.height > gravity * 10) {
       dot.p2.body.velocity = [0, Math.floor(two.height / 7)];
     } else {
