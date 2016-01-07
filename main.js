@@ -267,12 +267,8 @@
     var ref, ref1, ref2, ref3, x, y;
     e.preventDefault();
     e.stopPropagation();
-    console.log(e);
     x = (ref = e != null ? e.pageX : void 0) != null ? ref : e != null ? (ref1 = e.touches[0]) != null ? ref1.pageX : void 0 : void 0;
     y = (ref2 = e != null ? e.pageY : void 0) != null ? ref2 : e != null ? (ref3 = e.touches[0]) != null ? ref3.pageY : void 0 : void 0;
-    console.log(x);
-    console.log(y);
-    console.log(e);
     if ((x != null) && (y != null)) {
       user_dots.push(createFixedDot(world, two, dot, x, y, 30));
       return true;

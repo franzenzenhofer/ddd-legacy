@@ -192,12 +192,12 @@ world.on("beginContact",(e) ->
 addDotByEvent = (e) ->
   e.preventDefault()
   e.stopPropagation()
-  console.log(e)
+  #console.log(e)
   x = e?.pageX ? e?.touches[0]?.pageX
   y = e?.pageY ? e?.touches[0]?.pageY
-  console.log(x)
-  console.log(y)
-  console.log(e)
+  #console.log(x)
+  #console.log(y)
+  #console.log(e)
   if(x? and y?)
     user_dots.push(createFixedDot(world, two, dot, x,y,30))
     return true
