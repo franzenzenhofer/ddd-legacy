@@ -156,9 +156,9 @@
     }
     if (!x) {
       if (Math.random() < 0.5) {
-        x = randomInt(0, Math.floor(two.width / 2) - 15);
+        x = randomInt(0, Math.floor(two.width / 2) - 28);
       } else {
-        x = randomInt(Math.floor(two.width / 2) + 15, two.width);
+        x = randomInt(Math.floor(two.width / 2) + 28, two.width);
       }
     }
     end_dot = createDot(world, two, x, y, r, m);

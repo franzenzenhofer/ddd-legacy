@@ -84,9 +84,9 @@ createEndDot = (world = world, two = two, x ,y=randomInt(0,two.height),r=20,m=0)
 
   if not x
     if Math.random() < 0.5
-      x = randomInt(0,Math.floor(two.width/2)-15)
+      x = randomInt(0,Math.floor(two.width/2)-28)
     else
-      x = randomInt(Math.floor(two.width/2)+15,two.width)
+      x = randomInt(Math.floor(two.width/2)+28,two.width)
   end_dot = createDot(world, two, x,y,r,m)
   end_dot.p2.shape.sensor = true
   end_dot.p2.body.damping = 0
@@ -103,6 +103,9 @@ do init = () ->
 
 
   end_dot = createEndDot(world, two)
+  #for x in [0...200]
+  #  createEndDot(world, two)
+
   dot = createDot(world, two, two.width/2,-30,10,1)
   hard_dots = _level_ - 5
   if hard_dots > 0
@@ -112,7 +115,7 @@ do init = () ->
       if not (hd_x > end_dot.p2.body.position[0] - 35 and hd_x < end_dot.p2.body.position[0] + 35 and hd_y > end_dot.p2.body.position[1] - 35 and hd_y < end_dot.p2.body.position[1] + 35)
         hd = createFixedDot(world, two, dot, hd_x, hd_y,30)
         user_dots.push(hd)
-
+  #debugger;
 
 
 
