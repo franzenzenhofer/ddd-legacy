@@ -181,13 +181,36 @@ world.on("beginContact",(e) ->
 
 
 #tap stuff
-mc = new Hammer.Manager(document.body)
-Tap = new Hammer.Tap({interval:1})
-mc.add(Tap)
-mc.on('tap',(e)->
+##mc = new Hammer.Manager(document.body)
+#Tap = new Hammer.Tap({interval:1})
+#mc.add(Tap)
+#mc.on('tap',(e)->
 
-  user_dots.push(createFixedDot(world, two, dot, e.pointers[0].pageX,e.pointers[0].pageY,30))
-  )
+#  user_dots.push(createFixedDot(world, two, dot, e.pointers[0].pageX,e.pointers[0].pageY,30))
+#  )
+
+addDotByEvent = (e) ->
+  e.preventDefault()
+  e.stopPropagation()
+  console.log(e)
+  x = e?.pageX ? e?.touches[0]?.pageX
+  y = e?.pageY ? e?.touches[0]?.pageY
+  console.log(x)
+  console.log(y)
+  console.log(e)
+  if(x? and y?)
+    user_dots.push(createFixedDot(world, two, dot, x,y,30))
+    return true
+  else
+    return false
+
+document.body.addEventListener('mousedown', (e) -> addDotByEvent(e))
+document.body.addEventListener('touchstart', (e) -> addDotByEvent(e))
+document.body.addEventListener('click', (e)->e.preventDefault())
+#document.body.addEventListener('click', (e)->e.preventDefault())
+
+
+
 
 #drawLine = (line) ->
 #  line.two.translation.set(line.p2.body.position[0],# line.p2.body.position[1])
