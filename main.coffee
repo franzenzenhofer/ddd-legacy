@@ -22,6 +22,7 @@ _level_ = 0
 end_dot = {}
 dot = {}
 user_dots = []
+start_dots = []
 
 setLevelCounter = (l=0, color = Please.make_color()) ->
   level_element = document.getElementById('level')
@@ -76,6 +77,21 @@ createFixedDot = (world, two, dot, w,h,r,m=0) ->
             }))
   return new_dot
 
+createUserDot = (world = world, two = two, dot = dot, user_dots = user_dots, w,h,r,m) ->
+  #r = r - user_dots.length
+  ud = createFixedDot(world, two, dot, w,h,r,m)
+  for doties,j in user_dots
+    if user_dots.length - j > 4
+      doties.two.opacity = doties.two.opacity*0.8
+      if doties.two.opacity < 0.20
+        doties.two.opacity = 0
+        two.remove(doties) #doesnt seem to work
+        removeDot(doties)
+        #todo clean user_dots
+
+  user_dots.push(ud)
+  return ud
+
 drawDot = (dot, world = world, two = two) ->
  dot.two.translation.set( Math.floor(dot.p2.body.position[0]),Math.floor(dot.p2.body.position[1]))
  return dot
@@ -107,14 +123,14 @@ do init = () ->
   #  createEndDot(world, two)
 
   dot = createDot(world, two, two.width/2,-30,10,1)
-  hard_dots = _level_ - 5
+  hard_dots = _level_ - 4
   if hard_dots > 0
     for x in [0...hard_dots]
       hd_x = randomInt(0,two.width)
       hd_y = randomInt(50,two.height)
       if not (hd_x > end_dot.p2.body.position[0] - 35 and hd_x < end_dot.p2.body.position[0] + 35 and hd_y > end_dot.p2.body.position[1] - 35 and hd_y < end_dot.p2.body.position[1] + 35)
         hd = createFixedDot(world, two, dot, hd_x, hd_y,30)
-        user_dots.push(hd)
+        start_dots.push(hd)
   #debugger;
 
 
@@ -141,6 +157,9 @@ restart = (won = false) ->
   for doties in user_dots
     removeDot(doties)
   user_dots = []
+  for doties in start_dots
+    removeDot(doties)
+  start_dots = []
   if won is true
     _level_ = _level_ + 1
   else
@@ -202,7 +221,7 @@ addDotByEvent = (e) ->
   #console.log(y)
   #console.log(e)
   if(x? and y?)
-    user_dots.push(createFixedDot(world, two, dot, x,y,30))
+    createUserDot(world, two, dot, user_dots, x,y,30)
     return true
   else
     return false
