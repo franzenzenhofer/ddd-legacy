@@ -232,7 +232,8 @@ addDotByEvent = (e) ->
   #console.log(e)
   #check if the tab is on the end_dot to trigger special stuff
   if plusMinus(x, end_dot.p2.body.position[0],10) and plusMinus(y, end_dot.p2.body.position[1],10)
-    alert('gottach')
+    #alert('gottach')
+    return false
 
   if(x? and y?)
     createUserDot(world, two, dot, user_dots, x,y,30)
