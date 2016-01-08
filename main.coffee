@@ -6,6 +6,16 @@ randomInt = (min,max) ->
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1)) + min
 
+plusMinus = (v, target_value, range) ->
+  #debugger;
+  if v >= target_value - range and v < target_value + range
+    #d(v)
+    #d(target_value - range)
+    #d(target_value + range)
+    return true
+  else
+    return false
+
 two = new Two(
   fullscreen: true
   ).appendTo(document.body)
@@ -220,6 +230,10 @@ addDotByEvent = (e) ->
   #console.log(x)
   #console.log(y)
   #console.log(e)
+  #check if the tab is on the end_dot to trigger special stuff
+  if plusMinus(x, end_dot.p2.body.position[0],10) and plusMinus(y, end_dot.p2.body.position[1],10)
+    alert('gottach')
+
   if(x? and y?)
     createUserDot(world, two, dot, user_dots, x,y,30)
     return true
