@@ -227,9 +227,7 @@ addDotByEvent = (e) ->
   #console.log(e)
   x = e?.pageX ? e?.touches[0]?.pageX
   y = e?.pageY ? e?.touches[0]?.pageY
-  #console.log(x)
-  #console.log(y)
-  #console.log(e)
+
   #check if the tab is on the end_dot to trigger special stuff
   if plusMinus(x, end_dot.p2.body.position[0],10) and plusMinus(y, end_dot.p2.body.position[1],10)
     #alert('gottach')
