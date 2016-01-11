@@ -16,9 +16,14 @@ plusMinus = (v, target_value, range) ->
   else
     return false
 
-two = new Two(
+window.two = new Two(
   fullscreen: true
   ).appendTo(document.body)
+
+window.two_canvas = new Two(
+  fullscreen: true
+  type: Two.Types.canvas
+  )
 
 gravity = Math.floor(two.height/10)
 
@@ -224,12 +229,12 @@ world.on("beginContact",(e) ->
 addDotByEvent = (e) ->
   e.preventDefault()
   e.stopPropagation()
-  #console.log(e)
-  x = e?.pageX ? e?.touches[0]?.pageX
-  y = e?.pageY ? e?.touches[0]?.pageY
+  console.log(e)
+  x = e?.touches?[0]?.pageX ? e?.pageX
+  y = e?.touches?[0]?.pageY ? e?.pageY 
 
   #check if the tab is on the end_dot to trigger special stuff
-  if plusMinus(x, end_dot.p2.body.position[0],10) and plusMinus(y, end_dot.p2.body.position[1],10)
+  if plusMinus(x, end_dot.p2.body.position[0],15) and plusMinus(y, end_dot.p2.body.position[1],15)
     #alert('gottach')
     return false
 
