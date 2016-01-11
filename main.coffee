@@ -138,7 +138,7 @@ do init = () ->
   #  createEndDot(world, two)
 
   dot = createDot(world, two, two.width/2,-30,10,1)
-  hard_dots = _level_ - 4
+  hard_dots = _level_ - 2
   if hard_dots > 0
     for x in [0...hard_dots]
       hd_x = randomInt(0,two.width)
@@ -231,7 +231,7 @@ addDotByEvent = (e) ->
   e.stopPropagation()
   console.log(e)
   x = e?.touches?[0]?.pageX ? e?.pageX
-  y = e?.touches?[0]?.pageY ? e?.pageY 
+  y = e?.touches?[0]?.pageY ? e?.pageY
 
   #check if the tab is on the end_dot to trigger special stuff
   if plusMinus(x, end_dot.p2.body.position[0],15) and plusMinus(y, end_dot.p2.body.position[1],15)

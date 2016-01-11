@@ -219,7 +219,7 @@
     setWorldColor();
     end_dot = createEndDot(world, two);
     dot = createDot(world, two, two.width / 2, -30, 10, 1);
-    hard_dots = _level_ - 4;
+    hard_dots = _level_ - 2;
     if (hard_dots > 0) {
       for (x = i = 0, ref = hard_dots; 0 <= ref ? i < ref : i > ref; x = 0 <= ref ? ++i : --i) {
         hd_x = randomInt(0, two.width);
