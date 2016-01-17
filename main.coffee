@@ -94,15 +94,22 @@ createFixedDot = (world, two, dot, w,h,r,m=0) ->
 
 createUserDot = (world = world, two = two, dot = dot, user_dots = user_dots, w,h,r,m) ->
   #r = r - user_dots.length
-  ud = createFixedDot(world, two, dot, w,h,r,m)
+
+  #_level_
+  opacity_factor = 1 - (_level_/100)
+  if _level_ < 20 then opacity_factor = 0.8
+  if opacity_factor < 0 then opacity_factor = 0
+
   for doties,j in user_dots
-    if user_dots.length - j > 4
-      doties.two.opacity = doties.two.opacity*0.8
+    if (_level_ < 20 and user_dots.length - j > 3) or _level_ > 20
+      doties.two.opacity = doties.two.opacity*opacity_factor
       if doties.two.opacity < 0.20
         doties.two.opacity = 0
         two.remove(doties) #doesnt seem to work
         removeDot(doties)
         #todo clean user_dots
+
+  ud = createFixedDot(world, two, dot, w,h,r,m)
 
   user_dots.push(ud)
   return ud

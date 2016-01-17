@@ -143,7 +143,7 @@
   };
 
   createUserDot = function(world, two, dot, user_dots, w, h, r, m) {
-    var doties, i, j, len, ud;
+    var doties, i, j, len, opacity_factor, ud;
     if (world == null) {
       world = world;
     }
@@ -156,11 +156,17 @@
     if (user_dots == null) {
       user_dots = user_dots;
     }
-    ud = createFixedDot(world, two, dot, w, h, r, m);
+    opacity_factor = 1 - (_level_ / 100);
+    if (_level_ < 20) {
+      opacity_factor = 0.8;
+    }
+    if (opacity_factor < 0) {
+      opacity_factor = 0;
+    }
     for (j = i = 0, len = user_dots.length; i < len; j = ++i) {
       doties = user_dots[j];
-      if (user_dots.length - j > 4) {
-        doties.two.opacity = doties.two.opacity * 0.8;
+      if ((_level_ < 20 && user_dots.length - j > 3) || _level_ > 20) {
+        doties.two.opacity = doties.two.opacity * opacity_factor;
         if (doties.two.opacity < 0.20) {
           doties.two.opacity = 0;
           two.remove(doties);
@@ -168,6 +174,7 @@
         }
       }
     }
+    ud = createFixedDot(world, two, dot, w, h, r, m);
     user_dots.push(ud);
     return ud;
   };
