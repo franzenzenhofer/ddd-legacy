@@ -1,0 +1,32 @@
+{
+  "name": "dotdotdot",
+  "version": "1.0.0",
+  "description": "dotdotdot game",
+  "main": "./dist/ddd.js",
+  "dependencies": {
+    "gulp-uglify": "^1.5.1",
+    "gulp-rename": "^1.2.2",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "pleasejs": "^0.4.2",
+    "two.js": "^0.5.0",
+    "p2": "^0.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franzenzenhofer/ddd.git"
+  },
+  "keywords": [
+    "game"
+  ],
+  "author": "franz enzenhofer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franzenzenhofer/ddd/issues"
+  },
+  "homepage": "https://github.com/franzenzenhofer/ddd#readme"
+}
