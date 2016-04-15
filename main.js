@@ -165,7 +165,7 @@
     }
     for (j = i = 0, len = user_dots.length; i < len; j = ++i) {
       doties = user_dots[j];
-      if ((_level_ < 20 && user_dots.length - j > 3) || _level_ > 20) {
+      if ((_level_ < 20 && user_dots.length - j > 3) || _level_ >= 20) {
         doties.two.opacity = doties.two.opacity * opacity_factor;
         if (doties.two.opacity < 0.20) {
           doties.two.opacity = 0;
@@ -226,7 +226,7 @@
     setWorldColor();
     end_dot = createEndDot(world, two);
     dot = createDot(world, two, two.width / 2, -30, 10, 1);
-    hard_dots = _level_ - 2;
+    hard_dots = _level_;
     if (hard_dots > 0) {
       for (x = i = 0, ref = hard_dots; 0 <= ref ? i < ref : i > ref; x = 0 <= ref ? ++i : --i) {
         hd_x = randomInt(0, two.width);
@@ -324,7 +324,6 @@
     var ref, ref1, ref2, ref3, ref4, ref5, x, y;
     e.preventDefault();
     e.stopPropagation();
-    console.log(e);
     x = (ref = e != null ? (ref1 = e.touches) != null ? (ref2 = ref1[0]) != null ? ref2.pageX : void 0 : void 0 : void 0) != null ? ref : e != null ? e.pageX : void 0;
     y = (ref3 = e != null ? (ref4 = e.touches) != null ? (ref5 = ref4[0]) != null ? ref5.pageY : void 0 : void 0 : void 0) != null ? ref3 : e != null ? e.pageY : void 0;
     if (plusMinus(x, end_dot.p2.body.position[0], 15) && plusMinus(y, end_dot.p2.body.position[1], 15)) {
@@ -349,37 +348,5 @@
   document.body.addEventListener('click', function(e) {
     return e.preventDefault();
   });
-
-
-  /*
-  createLine = (world, two, x = 120, y = 450, w = 700, h = 20, m = 0, a = 45) ->
-    rect = two.makeRectangle(x, y, w, h);
-    rect.fill = 'rgb(0, 200, 255)';
-    rect.opacity = 0.75;
-    rect.rotation = a
-    rect.noStroke()
-  
-    boxShape = new p2.Box({ width: w, height: h, angle: a})
-    boxBody = new (p2.Body)(
-      mass: m
-      position: [
-        x
-        y
-      ]
-      angle: 45
-      angularVelocity: 0
-    )
-  
-    boxShape.material = new p2.Material()
-    boxBody.addShape(boxShape)
-    world.addBody(boxBody)
-  
-    return {
-      two: rect
-      p2:
-        shape: boxShape
-        body: boxBody
-    }
-   */
 
 }).call(this);

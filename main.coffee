@@ -101,7 +101,7 @@ createUserDot = (world = world, two = two, dot = dot, user_dots = user_dots, w,h
   if opacity_factor < 0 then opacity_factor = 0
 
   for doties,j in user_dots
-    if (_level_ < 20 and user_dots.length - j > 3) or _level_ > 20
+    if (_level_ < 20 and user_dots.length - j > 3) or _level_ >= 20
       doties.two.opacity = doties.two.opacity*opacity_factor
       if doties.two.opacity < 0.20
         doties.two.opacity = 0
@@ -145,7 +145,7 @@ do init = () ->
   #  createEndDot(world, two)
 
   dot = createDot(world, two, two.width/2,-30,10,1)
-  hard_dots = _level_ - 2
+  hard_dots = _level_ #- 2
   if hard_dots > 0
     for x in [0...hard_dots]
       hd_x = randomInt(0,two.width)
@@ -236,7 +236,7 @@ world.on("beginContact",(e) ->
 addDotByEvent = (e) ->
   e.preventDefault()
   e.stopPropagation()
-  console.log(e)
+  #console.log(e)
   x = e?.touches?[0]?.pageX ? e?.pageX
   y = e?.touches?[0]?.pageY ? e?.pageY
 
