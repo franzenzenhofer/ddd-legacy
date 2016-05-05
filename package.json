@@ -1,7 +1,8 @@
 {
-  "name": "dotdotdot",
+  "name": "DotDotDot",
+  "productName": "DotDotDot",
   "version": "1.0.0",
-  "description": "dotdotdot game",
+  "description": "DotDotDot Game by Franz Enzenhofer",
   "main": "./dist/ddd.js",
   "dependencies": {
     "gulp-uglify": "^1.5.1",
